@@ -1,18 +1,16 @@
 import React from "react";
 import Post from "../components/Post";
-import fetchData from "../lib/fetchData";
-
-const POST_URL = "https://dummyjson.com/posts";
+import getPosts from "../lib/getPosts";
 
 export default async function Posts() {
-  const data = await fetchData(POST_URL);
+  const posts = await getPosts();
 
-  if (!data.posts) return;
+  if (!posts) return;
 
   return (
     <div className="w-full max-w-screen-lg mx-auto my-10">
-      {data.posts.map((post) => (
-        <Post key={post.id} data={post} />
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
       ))}
     </div>
   );

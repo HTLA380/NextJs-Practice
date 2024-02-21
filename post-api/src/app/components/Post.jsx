@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React from "react";
 
-const Post = ({ data }) => {
-  const { title, body, id } = data;
+const Post = ({ post }) => {
+  if (!post) return;
 
-  if (!data) return;
+  const { title, body, id } = post;
 
   return (
-    <div className="p-5 m-5 bg-gray-800 rounded-md text-gray-200">
+    <div className="p-5 m-5 text-gray-200 bg-gray-800 rounded-md">
       <Link href={`/posts/${id}`} className="text-2xl font-bold">
         {title}
       </Link>

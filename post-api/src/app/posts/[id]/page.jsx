@@ -1,13 +1,11 @@
 import UserCard from "@/app/components/UserCard";
-import fetchData from "@/app/lib/fetchData";
+import getPost from "@/app/lib/getPost";
+import getUser from "@/app/lib/getUser";
 import React, { Suspense } from "react";
 
-const POST_URL = "https://dummyjson.com/posts";
-const USER_URL = "https://dummyjson.com/users";
-
 export default async function PostDetail({ params: { id } }) {
-  const postData = fetchData(`${POST_URL}/${id}`);
-  const userData = fetchData(`${USER_URL}/${id}`);
+  const postData = getPost(id);
+  const userData = getUser(id);
 
   const post = await postData;
 
